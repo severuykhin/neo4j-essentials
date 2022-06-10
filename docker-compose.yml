@@ -1,0 +1,18 @@
+version: "3.5"
+
+services:
+  neo4j:
+    restart: always
+    image: neo4j:4.2.3
+    container_name: neo4j
+    ports:
+      - "7474:7474" # web интерфейс
+      - "7687:7687" # общение с neo4j по протоколу bolt
+    volumes:
+      - ./neo4j/conf:/var/lib/neo4j/conf
+      - ./neo4j/import:/var/lib/neo4j/import
+      - ./neo4j/data:/data
+      - ./neo4j/logs:/logs
+      - ./neo4j/plugins:/plugins
+    environment:
+      - NEO4J_AUTH=neo4j/test # задаем данные для аутентификации
