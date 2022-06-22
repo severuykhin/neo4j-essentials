@@ -162,6 +162,10 @@ MATCH path = (c:Commit {id: "76055848-e35a-478f-87f1-98427e50348d"})-[*]->(paren
 MATCH path = (c:Commit {id: "76055848-e35a-478f-87f1-98427e50348d"})-[:CHILD*]->(parent_c) return path
 ```
 
+Получить всю цепочку коммитов начиная с определенного коммита
+```
+MATCH (c:Commit {id: "5d97ab67-703a-4a27-bfc7-8cd3263ba234"})-[r:PARENT*]-(p:Commit) RETURN c,r,p
+```
 
 Добавим ветвление
 Для этого нам понадобится создать такую ноду в графе, 
